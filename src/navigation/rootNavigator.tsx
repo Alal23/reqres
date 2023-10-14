@@ -1,7 +1,7 @@
-import {Platform} from 'react-native';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import * as LibraryScreen from '../screens';
+import * as AuthScreen from '@modules/auth/screens';
+import * as UserScreen from '@modules/user/screens';
 import {RootStackNavigationTypes, routesEnum} from '../routes';
 
 const Stack = createNativeStackNavigator<RootStackNavigationTypes>();
@@ -13,16 +13,11 @@ const RootNavigator = () => {
     <Navigator
       screenOptions={{
         headerShown: false,
-        gestureEnabled: Platform.OS !== 'android',
       }}>
-      <Screen
-        name={routesEnum.LibraryMain}
-        component={LibraryScreen.LibraryMain}
-      />
-      <Screen
-        name={routesEnum.LibraryRegister}
-        component={LibraryScreen.LibraryRegister}
-      />
+      <Screen name={routesEnum.AuthLoad} component={AuthScreen.AuthLoad} />
+      <Screen name={routesEnum.AuthLogin} component={AuthScreen.AuthLogin} />
+      <Screen name={routesEnum.UserMain} component={UserScreen.UserMain} />
+      <Screen name={routesEnum.UserAdd} component={UserScreen.UserAdd} />
     </Navigator>
   );
 };
